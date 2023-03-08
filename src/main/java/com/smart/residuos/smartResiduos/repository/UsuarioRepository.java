@@ -9,6 +9,5 @@ import com.smart.residuos.smartResiduos.model.UsuarioModel;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, BigInteger> {
-	
 
 }
