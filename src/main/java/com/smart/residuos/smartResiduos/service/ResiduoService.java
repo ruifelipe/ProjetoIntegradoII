@@ -1,13 +1,11 @@
 package com.smart.residuos.smartResiduos.service;
 
-import java.math.BigInteger;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smart.residuos.smartResiduos.model.ResiduoModel;
-import com.smart.residuos.smartResiduos.model.UsuarioModel;
 import com.smart.residuos.smartResiduos.repository.ResiduoRepository;
 import com.smart.residuos.smartResiduos.repository.UsuarioRepository;
 
@@ -25,10 +23,9 @@ public class ResiduoService {
 		return residuoRepository.save(parametro);
 
 	}
-	
-	public Optional<UsuarioModel> buscarPorId(BigInteger id) {
 		
-		return usuarioRepository.findById(id);
-	}
+	public List<ResiduoModel> listar(){
+		return residuoRepository.findAll();
+	}	
 
 }

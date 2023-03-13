@@ -19,6 +19,7 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaService empresaService;
 	
+	
 	@GetMapping("/salvar")
 	public ModelAndView form() {
 		
@@ -29,6 +30,19 @@ public class EmpresaController {
 		
 	}
 
+	
+	@GetMapping("/perfilEmpresa")
+	public ModelAndView perfil() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("empresas/perfilEmpresa");
+		List<EmpresaModel> listaEmpresaModel = empresaService.listar();
+		mv.addObject("listaEmpresaModel", listaEmpresaModel);
+		
+		return mv;
+		
+	}
+	
 	@PostMapping(path="salvar")
 	public ModelAndView salvar(EmpresaModel empModel) {
 
