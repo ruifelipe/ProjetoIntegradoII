@@ -7,10 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.smart.residuos.smartResiduos.model.UsuarioModel;
 import com.smart.residuos.smartResiduos.service.UsuarioService;
@@ -22,16 +22,25 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@RequestMapping(value = "/salvar", method = RequestMethod.GET)
-	public String form() {
-		return usuarioService.form();
+	@GetMapping("/salvar")
+	public ModelAndView form() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("usuarios/Cadastrar-Usuario");
+		
+		return mv;
+		
 	}
 
-	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public UsuarioModel salvar(@RequestBody UsuarioModel usuModel) {
+	@PostMapping(path="salvar")
+	public ModelAndView salvar(UsuarioModel usuModel) {
 
-		return usuarioService.salvar(usuModel);
-
+		ModelAndView mv = new ModelAndView();
+		usuarioService.salvar(usuModel);
+		mv.setViewName("usuarios/Cadastrar-Usuario");
+		
+		return mv;
+		
 	}
 
 	@GetMapping("/{id}")

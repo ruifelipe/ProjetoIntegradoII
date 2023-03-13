@@ -29,9 +29,5 @@ public class UsuarioService {
 	
 	public List<UsuarioModel> listar(){
 		return usuarioRepository.findAll();
-	}
-	
-	public String form() {
-		return "usuarios/formCadastro";
-	}
+	}	
 }
